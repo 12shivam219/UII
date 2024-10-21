@@ -1,17 +1,29 @@
-import { useRoutes } from 'react-router-dom';
-import Login from '@Components/authentication/login/Login';
-import Signup from '@Components/authentication/signup/Signup';
-
+import { useRoutes } from "react-router-dom";
+import Login from "@Components/authentication/login/Login";
+import Signup from "@Components/authentication/signup/Signup";
+import { Dashboard } from "@Components/Dashboard/Dashboard";
+// import { Header } from "@Components/Header/Header";
+import { Layout } from "@Components/Layout/Layout";
 
 const routes = [
   {
-    path: '/',
-    element: <Login />,
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "signup",
+        element: <Signup />,
+      },
+      {
+        path: "/",
+        element: <Dashboard />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      }
+    ],
   },
-  {
-    path: '/signup',
-    element: <Signup />,
-  }
 ];
 
 const RoutesMap = () => {
